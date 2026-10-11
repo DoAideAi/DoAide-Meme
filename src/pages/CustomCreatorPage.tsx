@@ -11,7 +11,7 @@ interface TextOverlay {
 
 const COLORS = [
   '#ffffff', '#000000', '#ff0000', '#ffff00', '#00ff00',
-  '#0000ff', '#ff00ff', '#F0B429', '#e91e63', '#00bcd4',
+  '#0000ff', '#ff00ff', '#0D9488', '#e91e63', '#00bcd4',
 ]
 
 export default function CustomCreatorPage() {
@@ -103,7 +103,7 @@ export default function CustomCreatorPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-b from-amber-50 to-white py-10 px-4">
+      <section className="bg-gradient-to-b from-teal-50 to-white py-10 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
             Custom Meme Creator
@@ -120,7 +120,7 @@ export default function CustomCreatorPage() {
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="w-full max-w-lg mx-auto block py-20 border-2 border-dashed border-gray-300 rounded-2xl text-center hover:border-[#F0B429] transition-colors cursor-pointer bg-gray-50"
+            className="w-full max-w-lg mx-auto block py-20 border-2 border-dashed border-gray-300 rounded-2xl text-center hover:border-[#0D9488] transition-colors cursor-pointer bg-gray-50"
           >
             <FiUpload className="mx-auto mb-3 text-gray-400" size={48} />
             <p className="text-lg font-medium text-gray-700">Upload Your Image</p>
@@ -140,7 +140,7 @@ export default function CustomCreatorPage() {
                 <button
                   type="button"
                   onClick={handleDownload}
-                  className="flex items-center gap-2 bg-gray-900 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-gray-800 cursor-pointer"
+                  className="flex items-center gap-2 bg-[#0D9488] text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-[#0B7C72] cursor-pointer"
                 >
                   <FiDownload size={16} />
                   Download Meme
@@ -192,22 +192,22 @@ export default function CustomCreatorPage() {
         <h2 className="text-2xl font-bold text-gray-900 mb-6">How It Works</h2>
         <div className="grid sm:grid-cols-3 gap-6">
           <div className="text-center">
-            <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span className="text-xl font-bold text-[#F0B429]">1</span>
+            <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <span className="text-xl font-bold text-[#0D9488]">1</span>
             </div>
             <h3 className="font-semibold text-gray-900 mb-1">Upload Image</h3>
             <p className="text-sm text-gray-600">Upload any photo or screenshot from your device.</p>
           </div>
           <div className="text-center">
-            <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span className="text-xl font-bold text-[#F0B429]">2</span>
+            <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <span className="text-xl font-bold text-[#0D9488]">2</span>
             </div>
             <h3 className="font-semibold text-gray-900 mb-1">Add Text</h3>
             <p className="text-sm text-gray-600">Type your top and bottom text with Impact font styling.</p>
           </div>
           <div className="text-center">
-            <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span className="text-xl font-bold text-[#F0B429]">3</span>
+            <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <span className="text-xl font-bold text-[#0D9488]">3</span>
             </div>
             <h3 className="font-semibold text-gray-900 mb-1">Download</h3>
             <p className="text-sm text-gray-600">Download your meme as a high-quality PNG image.</p>
@@ -232,7 +232,7 @@ export default function CustomCreatorPage() {
             <h3 className="font-semibold text-gray-900 mb-1">Can I change the font?</h3>
             <p className="text-gray-600 text-sm">
               The custom creator uses classic Impact font. For more font options, use the{' '}
-              <a href="/create" className="text-[#F0B429] hover:underline">full editor</a>.
+              <a href="/create" className="text-[#0D9488] hover:underline">full editor</a>.
             </p>
           </div>
         </div>
@@ -258,7 +258,7 @@ function TextControls({
         placeholder={`Enter ${label.toLowerCase()}...`}
         value={overlay.text}
         onChange={(e) => onChange({ ...overlay, text: e.target.value })}
-        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#F0B429]"
+        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0D9488]"
       />
       <div>
         <label className="block text-xs text-gray-500 mb-1">Size: {overlay.fontSize}px</label>
@@ -268,7 +268,7 @@ function TextControls({
           max={120}
           value={overlay.fontSize}
           onChange={(e) => onChange({ ...overlay, fontSize: Number(e.target.value) })}
-          className="w-full accent-[#F0B429]"
+          className="w-full accent-[#0D9488]"
         />
       </div>
       <div>
@@ -280,7 +280,7 @@ function TextControls({
               type="button"
               onClick={() => onChange({ ...overlay, color: c })}
               className={`w-6 h-6 rounded-full border-2 cursor-pointer ${
-                overlay.color === c ? 'border-[#F0B429] scale-110' : 'border-gray-200'
+                overlay.color === c ? 'border-[#0D9488] scale-110' : 'border-gray-200'
               }`}
               style={{ backgroundColor: c }}
             />

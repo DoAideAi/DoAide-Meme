@@ -42,7 +42,7 @@ export default function CaptionGeneratorPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-b from-amber-50 to-white py-10 px-4">
+      <section className="bg-gradient-to-b from-teal-50 to-white py-10 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
             AI Meme Caption Generator
@@ -66,7 +66,7 @@ export default function CaptionGeneratorPage() {
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
               maxLength={200}
-              className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#F0B429]"
+              className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#0D9488]"
               onKeyDown={(e) => e.key === 'Enter' && handleGenerate()}
             />
           </div>
@@ -78,7 +78,7 @@ export default function CaptionGeneratorPage() {
             <select
               value={selectedTemplate}
               onChange={(e) => setSelectedTemplate(e.target.value)}
-              className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#F0B429]"
+              className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#0D9488]"
             >
               <option value="">Any template</option>
               {templates.map((t) => (
@@ -99,7 +99,7 @@ export default function CaptionGeneratorPage() {
                   onClick={() => setTone(t)}
                   className={`px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-colors ${
                     tone === t
-                      ? 'bg-gray-900 text-white'
+                      ? 'bg-[#0D9488] text-white'
                       : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                   }`}
                 >
@@ -113,7 +113,7 @@ export default function CaptionGeneratorPage() {
             type="button"
             onClick={handleGenerate}
             disabled={loading || !topic.trim()}
-            className="w-full py-3 bg-[#F0B429] text-gray-900 rounded-xl text-base font-bold hover:bg-[#D99E1E] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+            className="w-full py-3 bg-[#0D9488] text-white rounded-xl text-base font-bold hover:bg-[#0B7C72] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
           >
             {loading ? 'Generating...' : 'Generate Captions'}
           </button>
@@ -140,7 +140,7 @@ export default function CaptionGeneratorPage() {
                 <button
                   type="button"
                   onClick={() => handleUseCaption(caption)}
-                  className="shrink-0 bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 cursor-pointer"
+                  className="shrink-0 bg-[#0D9488] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#0B7C72] cursor-pointer"
                 >
                   Use This
                 </button>
@@ -154,22 +154,22 @@ export default function CaptionGeneratorPage() {
         <h2 className="text-2xl font-bold text-gray-900 mb-6">How the AI Caption Generator Works</h2>
         <div className="grid sm:grid-cols-3 gap-6">
           <div className="text-center">
-            <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span className="text-xl font-bold text-[#F0B429]">1</span>
+            <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <span className="text-xl font-bold text-[#0D9488]">1</span>
             </div>
             <h3 className="font-semibold text-gray-900 mb-1">Describe Your Topic</h3>
             <p className="text-sm text-gray-600">Tell the AI what your meme is about.</p>
           </div>
           <div className="text-center">
-            <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span className="text-xl font-bold text-[#F0B429]">2</span>
+            <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <span className="text-xl font-bold text-[#0D9488]">2</span>
             </div>
             <h3 className="font-semibold text-gray-900 mb-1">Get 5 Suggestions</h3>
             <p className="text-sm text-gray-600">AI generates 5 different caption ideas.</p>
           </div>
           <div className="text-center">
-            <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span className="text-xl font-bold text-[#F0B429]">3</span>
+            <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <span className="text-xl font-bold text-[#0D9488]">3</span>
             </div>
             <h3 className="font-semibold text-gray-900 mb-1">Create Your Meme</h3>
             <p className="text-sm text-gray-600">Click "Use This" to open the editor with your caption pre-filled.</p>

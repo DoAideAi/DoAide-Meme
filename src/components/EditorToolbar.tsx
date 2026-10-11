@@ -33,7 +33,7 @@ const FONTS = [
 
 const COLORS = [
   '#ffffff', '#000000', '#ff0000', '#00ff00', '#0000ff',
-  '#ffff00', '#ff00ff', '#00ffff', '#F0B429', '#ff6b35',
+  '#ffff00', '#ff00ff', '#00ffff', '#0D9488', '#ff6b35',
   '#e91e63', '#9c27b0', '#4caf50', '#2196f3', '#795548',
 ]
 
@@ -68,7 +68,7 @@ export default function EditorToolbar({
             onClick={() => onTabChange(t.id)}
             className={`flex-1 flex items-center justify-center gap-1.5 py-3 text-xs font-medium transition-colors cursor-pointer ${
               activeTab === t.id
-                ? 'text-[#F0B429] border-b-2 border-[#F0B429] bg-amber-50'
+                ? 'text-[#0D9488] border-b-2 border-[#0D9488] bg-teal-50'
                 : 'text-gray-500 hover:text-gray-700'
             }`}
           >
@@ -143,7 +143,7 @@ function TextPanel({
             <textarea
               value={selectedTextBox.text}
               onChange={(e) => onTextUpdate({ text: e.target.value })}
-              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#F0B429]"
+              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#0D9488]"
               rows={2}
             />
           </div>
@@ -153,7 +153,7 @@ function TextPanel({
             <select
               value={selectedTextBox.fontFamily}
               onChange={(e) => onTextUpdate({ fontFamily: e.target.value })}
-              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#F0B429]"
+              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0D9488]"
             >
               {FONTS.map((f) => (
                 <option key={f} value={f}>{f}</option>
@@ -171,7 +171,7 @@ function TextPanel({
               max={80}
               value={selectedTextBox.fontSize}
               onChange={(e) => onTextUpdate({ fontSize: Number(e.target.value) })}
-              className="w-full accent-[#F0B429]"
+              className="w-full accent-[#0D9488]"
             />
           </div>
 
@@ -184,7 +184,7 @@ function TextPanel({
                   type="button"
                   onClick={() => onTextUpdate({ fill: c })}
                   className={`w-7 h-7 rounded-full border-2 cursor-pointer ${
-                    selectedTextBox.fill === c ? 'border-[#F0B429] scale-110' : 'border-gray-200'
+                    selectedTextBox.fill === c ? 'border-[#0D9488] scale-110' : 'border-gray-200'
                   }`}
                   style={{ backgroundColor: c }}
                 />
@@ -201,7 +201,7 @@ function TextPanel({
                   type="button"
                   onClick={() => onTextUpdate({ stroke: c })}
                   className={`w-7 h-7 rounded-full border-2 cursor-pointer ${
-                    selectedTextBox.stroke === c ? 'border-[#F0B429] scale-110' : 'border-gray-200'
+                    selectedTextBox.stroke === c ? 'border-[#0D9488] scale-110' : 'border-gray-200'
                   }`}
                   style={{ backgroundColor: c }}
                 />
@@ -220,7 +220,7 @@ function TextPanel({
               step={0.5}
               value={selectedTextBox.strokeWidth}
               onChange={(e) => onTextUpdate({ strokeWidth: Number(e.target.value) })}
-              className="w-full accent-[#F0B429]"
+              className="w-full accent-[#0D9488]"
             />
           </div>
 
@@ -234,7 +234,7 @@ function TextPanel({
               max={20}
               value={selectedTextBox.shadowBlur}
               onChange={(e) => onTextUpdate({ shadowBlur: Number(e.target.value) })}
-              className="w-full accent-[#F0B429]"
+              className="w-full accent-[#0D9488]"
             />
           </div>
 
@@ -248,7 +248,7 @@ function TextPanel({
               max={100}
               value={selectedTextBox.opacity * 100}
               onChange={(e) => onTextUpdate({ opacity: Number(e.target.value) / 100 })}
-              className="w-full accent-[#F0B429]"
+              className="w-full accent-[#0D9488]"
             />
           </div>
 
@@ -287,7 +287,7 @@ function ImagePanel({ onImageUpload }: { onImageUpload: (f: File) => void }) {
   return (
     <div className="space-y-4">
       <p className="text-sm text-gray-600">Upload your own image as the meme background.</p>
-      <label className="block w-full py-8 border-2 border-dashed border-gray-300 rounded-lg text-center cursor-pointer hover:border-[#F0B429] transition-colors">
+      <label className="block w-full py-8 border-2 border-dashed border-gray-300 rounded-lg text-center cursor-pointer hover:border-[#0D9488] transition-colors">
         <FiImage className="mx-auto mb-2 text-gray-400" size={32} />
         <span className="text-sm text-gray-500">Click to upload image</span>
         <span className="block text-xs text-gray-400 mt-1">PNG, JPG, GIF up to 10MB</span>
@@ -333,7 +333,7 @@ function FiltersPanel({
             max={s.max}
             value={filters[s.key]}
             onChange={(e) => onFiltersChange({ ...filters, [s.key]: Number(e.target.value) })}
-            className="w-full accent-[#F0B429]"
+            className="w-full accent-[#0D9488]"
           />
         </div>
       ))}

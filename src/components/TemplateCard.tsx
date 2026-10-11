@@ -10,7 +10,7 @@ export default function TemplateCard({ template, onClick }: Props) {
     <button
       type="button"
       onClick={() => onClick(template)}
-      className="group rounded-xl overflow-hidden border border-gray-200 hover:border-[#F0B429] hover:shadow-lg transition-all duration-200 cursor-pointer text-left bg-white"
+      className="group rounded-xl overflow-hidden border border-gray-200 hover:border-[#0D9488] hover:shadow-lg transition-all duration-200 cursor-pointer text-left bg-white"
     >
       <div
         className="aspect-square flex items-center justify-center p-4 relative"

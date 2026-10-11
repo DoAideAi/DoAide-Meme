@@ -36,9 +36,9 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="py-12 sm:py-20 px-4 text-center bg-gradient-to-b from-amber-50 to-white">
+      <section className="py-12 sm:py-20 px-4 text-center bg-gradient-to-b from-teal-50 to-white">
         <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
-          Create Memes <span className="text-[#F0B429]">Instantly</span>
+          Create Memes <span className="text-[#0D9488]">Instantly</span>
         </h1>
         <p className="text-lg text-gray-600 max-w-xl mx-auto mb-8">
           Pick a template, add your text, download and share. No login, no watermarks*, completely free.
@@ -47,7 +47,7 @@ export default function HomePage() {
           <button
             type="button"
             onClick={handleUploadCreate}
-            className="bg-gray-900 text-white px-8 py-3 rounded-xl text-base font-medium hover:bg-gray-800 cursor-pointer"
+            className="bg-[#0D9488] text-white px-8 py-3 rounded-xl text-base font-medium hover:bg-[#0B7C72] cursor-pointer"
           >
             Upload Your Image
           </button>
@@ -83,7 +83,7 @@ export default function HomePage() {
                 key={m.id}
                 type="button"
                 onClick={() => navigate(`/create?template=${m.templateId}`)}
-                className="flex-shrink-0 w-32 rounded-lg overflow-hidden border border-gray-200 hover:border-[#F0B429] cursor-pointer bg-white"
+                className="flex-shrink-0 w-32 rounded-lg overflow-hidden border border-gray-200 hover:border-[#0D9488] cursor-pointer bg-white"
               >
                 <img
                   src={m.thumbnail}
@@ -106,7 +106,7 @@ export default function HomePage() {
             placeholder="Search templates..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border border-gray-200 rounded-lg px-4 py-2 text-sm w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-[#F0B429]"
+            className="border border-gray-200 rounded-lg px-4 py-2 text-sm w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-[#0D9488]"
           />
         </div>
 
@@ -119,7 +119,7 @@ export default function HomePage() {
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors cursor-pointer ${
                 activeCategory === cat
-                  ? 'bg-gray-900 text-white'
+                  ? 'bg-[#0D9488] text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
@@ -150,7 +150,7 @@ export default function HomePage() {
         <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
           <a
             href="/templates"
-            className="block bg-white border border-gray-200 rounded-xl p-6 text-center hover:border-[#F0B429] hover:shadow-lg transition-all no-underline"
+            className="block bg-white border border-gray-200 rounded-xl p-6 text-center hover:border-[#0D9488] hover:shadow-lg transition-all no-underline"
           >
             <div className="text-3xl mb-3">🖼️</div>
             <h3 className="font-bold text-gray-900 mb-1">Template Browser</h3>
@@ -158,7 +158,7 @@ export default function HomePage() {
           </a>
           <a
             href="/custom-meme-creator"
-            className="block bg-white border border-gray-200 rounded-xl p-6 text-center hover:border-[#F0B429] hover:shadow-lg transition-all no-underline"
+            className="block bg-white border border-gray-200 rounded-xl p-6 text-center hover:border-[#0D9488] hover:shadow-lg transition-all no-underline"
           >
             <div className="text-3xl mb-3">✏️</div>
             <h3 className="font-bold text-gray-900 mb-1">Custom Meme Creator</h3>
@@ -166,9 +166,9 @@ export default function HomePage() {
           </a>
           <a
             href="/caption-generator"
-            className="block bg-white border border-gray-200 rounded-xl p-6 text-center hover:border-[#F0B429] hover:shadow-lg transition-all no-underline"
+            className="block bg-white border border-gray-200 rounded-xl p-6 text-center hover:border-[#0D9488] hover:shadow-lg transition-all no-underline"
           >
-            <div className="text-3xl mb-3">🤖</div>
+            <div className="text-3xl mb-3">✨</div>
             <h3 className="font-bold text-gray-900 mb-1">AI Caption Generator</h3>
             <p className="text-sm text-gray-500">Generate funny captions with AI. Pick a topic, get instant ideas.</p>
           </a>
@@ -182,7 +182,7 @@ export default function HomePage() {
         <button
           type="button"
           onClick={handleUploadCreate}
-          className="bg-[#F0B429] text-gray-900 px-8 py-3 rounded-xl text-base font-bold hover:bg-[#D99E1E] cursor-pointer"
+          className="bg-[#0D9488] text-white px-8 py-3 rounded-xl text-base font-bold hover:bg-[#0B7C72] cursor-pointer"
         >
           Create from Scratch
         </button>

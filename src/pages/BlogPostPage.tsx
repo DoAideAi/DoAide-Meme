@@ -45,7 +45,7 @@ export default function BlogPostPage() {
 
     return () => {
       script?.remove()
-      document.title = 'DoAide Meme — Free Meme Generator'
+      document.title = 'DoAide | Meme — Free Meme Generator'
     }
   }, [post])
 
@@ -55,7 +55,7 @@ export default function BlogPostPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Post Not Found</h1>
           <p className="text-gray-500 mb-4">The blog post you're looking for doesn't exist.</p>
-          <Link to="/blog" className="text-[#F0B429] hover:underline font-medium">
+          <Link to="/blog" className="text-[#0D9488] hover:underline font-medium">
             Back to Blog
           </Link>
         </div>
@@ -103,13 +103,13 @@ export default function BlogPostPage() {
             [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4
             [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4
             [&_li]:text-gray-700 [&_li]:mb-1
-            [&_a]:text-[#F0B429] [&_a]:hover:underline
+            [&_a]:text-[#0D9488] [&_a]:hover:underline
             [&_strong]:text-gray-900"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
         <footer className="mt-12 pt-8 border-t border-gray-200">
-          <div className="bg-amber-50 rounded-xl p-6 text-center">
+          <div className="bg-teal-50 rounded-xl p-6 text-center">
             <h2 className="text-lg font-bold text-gray-900 mb-2">
               Ready to create your own memes?
             </h2>
@@ -125,7 +125,7 @@ export default function BlogPostPage() {
               </Link>
               <Link
                 to="/caption-generator"
-                className="bg-[#F0B429] text-gray-900 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-[#D99E1E] no-underline"
+                className="bg-[#0D9488] text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-[#0B7C72] no-underline"
               >
                 AI Caption Generator
               </Link>

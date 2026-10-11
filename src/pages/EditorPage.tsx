@@ -265,7 +265,7 @@ export default function EditorPage() {
                 <Link
                   key={t.id}
                   to={`/create?template=${t.id}`}
-                  className="flex-shrink-0 w-28 rounded-lg overflow-hidden border border-gray-200 hover:border-[#F0B429] no-underline bg-white"
+                  className="flex-shrink-0 w-28 rounded-lg overflow-hidden border border-gray-200 hover:border-[#0D9488] no-underline bg-white"
                 >
                   <div
                     className="aspect-square flex items-center justify-center p-2"

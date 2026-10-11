@@ -2,9 +2,11 @@
 
 @theme {
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --color-gold: #F0B429;
-  --color-gold-dark: #D99E1E;
-  --color-brand-dark: #111827;
+  --color-da-primary: #0D9488;
+  --color-da-primary-dark: #0B7C72;
+  --color-da-bg: #ffffff;
+  --color-da-surface: #F0FDFA;
+  --color-da-text: #111827;
 }
 
 body {
@@ -12,6 +14,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-da-bg);
 }
 
 * {

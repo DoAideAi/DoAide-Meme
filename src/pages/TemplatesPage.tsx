@@ -30,7 +30,7 @@ export default function TemplatesPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-b from-amber-50 to-white py-10 px-4">
+      <section className="bg-gradient-to-b from-teal-50 to-white py-10 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
             Free Meme Template Browser
@@ -49,7 +49,7 @@ export default function TemplatesPage() {
             placeholder="Search templates..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border border-gray-200 rounded-lg px-4 py-2.5 text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-[#F0B429]"
+            className="border border-gray-200 rounded-lg px-4 py-2.5 text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-[#0D9488]"
           />
           <div className="flex gap-2">
             <button
@@ -86,7 +86,7 @@ export default function TemplatesPage() {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors cursor-pointer ${
                   activeCategory === cat
-                    ? 'bg-gray-900 text-white'
+                    ? 'bg-[#0D9488] text-white'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -143,14 +143,14 @@ export default function TemplatesPage() {
           <div>
             <h3 className="font-semibold text-gray-900 mb-1">Can I upload my own images?</h3>
             <p className="text-gray-600 text-sm">
-              Absolutely. Use our <a href="/custom-meme-creator" className="text-[#F0B429] hover:underline">Custom Meme Creator</a> to
+              Absolutely. Use our <a href="/custom-meme-creator" className="text-[#0D9488] hover:underline">Custom Meme Creator</a> to
               upload any image and add text overlays.
             </p>
           </div>
           <div>
             <h3 className="font-semibold text-gray-900 mb-1">Do you have an AI caption generator?</h3>
             <p className="text-gray-600 text-sm">
-              Yes! Our <a href="/caption-generator" className="text-[#F0B429] hover:underline">AI Caption Generator</a> uses
+              Yes! Our <a href="/caption-generator" className="text-[#0D9488] hover:underline">AI Caption Generator</a> uses
               AI to suggest funny captions for any meme template or topic.
             </p>
           </div>

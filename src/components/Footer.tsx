@@ -71,7 +71,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-bold text-gray-900 mb-3">About</h3>
+            <h3 className="text-sm font-bold text-gray-900 mb-3">DoAide Products</h3>
             <ul className="space-y-2">
               <li>
                 <a
@@ -83,13 +83,25 @@ export default function Footer() {
                   DoAide.com
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://meme.doaide.com"
+                  className="text-sm text-[#0D9488] hover:text-[#0B7C72] font-medium no-underline"
+                >
+                  DoAide | Meme
+                </a>
+              </li>
             </ul>
           </div>
         </div>
         <div className="border-t border-gray-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-1.5">
-            <span className="text-gray-900 font-bold">DoAide</span>
-            <span className="text-[#F0B429] font-bold italic">Meme</span>
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5">
+              <span className="text-gray-900 font-bold">DoAide</span>
+              <span className="text-gray-400 font-light">|</span>
+              <span className="text-[#0D9488] font-bold">Meme</span>
+            </div>
+            <span className="text-xs text-gray-400 border border-gray-200 rounded px-1.5 py-0.5">A DoAide Product</span>
           </div>
           <p className="text-sm text-gray-400">
             Free meme generator. No login required. &copy; {new Date().getFullYear()} DoAide.
