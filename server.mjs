@@ -1,15 +1,24 @@
 import express from 'express'
 import { fileURLToPath } from 'url'
-import { dirname, join } from 'path'
+import { dirname, join, sep } from 'path'
+import { existsSync } from 'fs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+const DIST = join(__dirname, 'dist')
 const app = express()
 const PORT = process.env.PORT || 3052
 const HOST = process.env.HOST || '172.18.0.1'
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || ''
 
 app.use(express.json({ limit: '1kb' }))
-app.use(express.static(join(__dirname, 'dist'), { maxAge: '7d' }))
+// redirect: false stops a 301 from /templates to /templates/; the sitemap and
+// canonicals use the slash-free URL, so serve the prerendered page directly.
+app.use(express.static(DIST, { maxAge: '7d', redirect: false }))
+app.get('/{*splat}', (req, res, next) => {
+  const page = join(DIST, req.path, 'index.html')
+  if (!page.startsWith(DIST + sep) || !existsSync(page)) return next()
+  res.sendFile(page)
+})
 
 const rateLimitMap = new Map()
 const RATE_LIMIT_WINDOW = 60_000
