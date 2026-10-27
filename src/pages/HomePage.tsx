@@ -4,8 +4,10 @@ import type { MemeTemplate, Category } from '../data/templates'
 import { templates, CATEGORIES } from '../data/templates'
 import { getRecentMemes } from '../utils/storage'
 import TemplateCard from '../components/TemplateCard'
+import { usePageSeo } from '../hooks/usePageSeo'
 
 export default function HomePage() {
+  usePageSeo()
   const navigate = useNavigate()
   const [activeCategory, setActiveCategory] = useState<Category>('All')
   const [search, setSearch] = useState('')

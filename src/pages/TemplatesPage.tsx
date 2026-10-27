@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { templates, CATEGORIES } from '../data/templates'
 import type { MemeTemplate, Category } from '../data/templates'
 import TemplateCard from '../components/TemplateCard'
+import { usePageSeo } from '../hooks/usePageSeo'
 
 export default function TemplatesPage() {
+  usePageSeo()
   const navigate = useNavigate()
   const [activeCategory, setActiveCategory] = useState<Category>('All')
   const [search, setSearch] = useState('')

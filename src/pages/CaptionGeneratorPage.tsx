@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import { templates } from '../data/templates'
 import { generateCaptions } from '../utils/api'
 import type { Caption } from '../utils/api'
+import { usePageSeo } from '../hooks/usePageSeo'
 
 const TONES = ['Funny', 'Sarcastic', 'Dark Humor', 'Wholesome', 'Absurd', 'Relatable']
 
 export default function CaptionGeneratorPage() {
+  usePageSeo()
   const navigate = useNavigate()
   const [topic, setTopic] = useState('')
   const [selectedTemplate, setSelectedTemplate] = useState('')

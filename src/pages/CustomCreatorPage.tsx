@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { FiUpload, FiDownload } from 'react-icons/fi'
+import { usePageSeo } from '../hooks/usePageSeo'
 
 interface TextOverlay {
   text: string
@@ -15,6 +16,7 @@ const COLORS = [
 ]
 
 export default function CustomCreatorPage() {
+  usePageSeo()
   const [image, setImage] = useState<HTMLImageElement | null>(null)
   const [topText, setTopText] = useState<TextOverlay>({
     text: '',

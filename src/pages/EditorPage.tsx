@@ -11,6 +11,7 @@ import type { ImageFilter } from '../utils/canvas'
 import { DEFAULT_FILTERS } from '../utils/canvas'
 import { saveRecentMeme } from '../utils/storage'
 import { shareToWhatsApp, shareToTwitter, shareNative, downloadBlob } from '../utils/share'
+import { usePageSeo } from '../hooks/usePageSeo'
 
 function createDefaultTextBoxes(template: MemeTemplate): TextBox[] {
   return template.textPositions.map((tp, i) => ({
@@ -33,6 +34,7 @@ function createDefaultTextBoxes(template: MemeTemplate): TextBox[] {
 }
 
 export default function EditorPage() {
+  usePageSeo()
   const [searchParams] = useSearchParams()
   const templateId = searchParams.get('template')
 

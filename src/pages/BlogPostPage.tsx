@@ -1,23 +1,19 @@
+import { useMemo } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { blogPosts } from '../data/blog-posts'
-import { useEffect } from 'react'
+import { usePageSeo } from '../hooks/usePageSeo'
+import type { RouteMeta } from '../routeMeta'
+
+const BASE = 'https://meme.doaide.com'
+const OG_IMAGE = `${BASE}/og-default.png`
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>()
   const post = blogPosts.find((p) => p.slug === slug)
 
-  useEffect(() => {
-    if (!post) return
-    document.title = `${post.title} | DoAide Meme Blog`
-
-    let script = document.getElementById('blog-jsonld') as HTMLScriptElement | null
-    if (!script) {
-      script = document.createElement('script')
-      script.id = 'blog-jsonld'
-      script.type = 'application/ld+json'
-      document.head.appendChild(script)
-    }
-    const schemas: object[] = [
+  const seoOverrides = useMemo<Partial<RouteMeta> | undefined>(() => {
+    if (!post) return undefined
+    const jsonLd: Record<string, unknown>[] = [
       {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
@@ -26,12 +22,12 @@ export default function BlogPostPage() {
         datePublished: post.date,
         dateModified: post.date,
         author: { '@type': 'Organization', name: 'DoAide', url: 'https://doaide.com' },
-        publisher: { '@type': 'Organization', name: 'DoAide Meme', url: 'https://meme.doaide.com' },
-        mainEntityOfPage: `https://meme.doaide.com/blog/${post.slug}`,
+        publisher: { '@type': 'Organization', name: 'DoAide Meme', url: BASE },
+        mainEntityOfPage: `${BASE}/blog/${post.slug}`,
       },
     ]
     if (post.faqs?.length) {
-      schemas.push({
+      jsonLd.push({
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         mainEntity: post.faqs.map((faq) => ({
@@ -41,13 +37,19 @@ export default function BlogPostPage() {
         })),
       })
     }
-    script.textContent = JSON.stringify(schemas)
-
-    return () => {
-      script?.remove()
-      document.title = 'DoAide | Meme — Free Meme Generator'
+    return {
+      title: `${post.title} | DoAide Meme Blog`,
+      description: post.description,
+      canonical: `${BASE}/blog/${post.slug}`,
+      h1: post.title,
+      ogImage: OG_IMAGE,
+      ogImageWidth: 1200,
+      ogImageHeight: 630,
+      jsonLd,
     }
   }, [post])
+
+  usePageSeo(seoOverrides)
 
   if (!post) {
     return (
@@ -114,7 +116,7 @@ export default function BlogPostPage() {
               Ready to create your own memes?
             </h2>
             <p className="text-gray-600 text-sm mb-4">
-              Browse {40}+ templates, use our AI caption generator, or upload your own image.
+              Browse 40+ templates, use our AI caption generator, or upload your own image.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

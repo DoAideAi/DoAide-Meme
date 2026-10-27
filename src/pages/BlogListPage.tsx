@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import { blogPosts } from '../data/blog-posts'
+import { usePageSeo } from '../hooks/usePageSeo'
 
 export default function BlogListPage() {
+  usePageSeo()
   return (
     <div className="min-h-screen bg-white">
       <section className="bg-gradient-to-b from-teal-50 to-white py-10 px-4">
