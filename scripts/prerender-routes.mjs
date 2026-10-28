@@ -35,43 +35,49 @@ const DIST = join(ROOT, 'dist')
 const BASE = 'https://meme.doaide.com'
 const OG_IMAGE = `${BASE}/og-default.png`
 
-/** @type {Array<{path: string, title: string, description: string, canonical: string, jsonLd?: object}>} */
+/** @type {Array<{path: string, title: string, description: string, canonical: string, h1: string}>} */
 const routes = [
   {
     path: '/',
     title: 'DoAide Meme — Free Meme Generator | 40+ Templates & AI Captions',
     description: 'Create memes instantly with 40+ templates, AI-powered captions, and custom image uploads. Free, no login required.',
     canonical: `${BASE}/`,
+    h1: 'Free Meme Generator',
   },
   {
     path: '/templates',
     title: 'Free Meme Templates — Browse 40+ Formats | DoAide Meme',
     description: 'Browse 40+ free meme templates. Pick a format, add your text, and download instantly. No login required.',
     canonical: `${BASE}/templates`,
+    h1: 'Free Meme Templates',
   },
   {
     path: '/custom-meme-creator',
     title: 'Custom Meme Creator — Upload & Add Text Free | DoAide Meme',
     description: 'Upload any image, add top and bottom text with Impact font, and download your meme. Free, no login, runs in your browser.',
     canonical: `${BASE}/custom-meme-creator`,
+    h1: 'Custom Meme Creator',
   },
   {
     path: '/caption-generator',
     title: 'AI Meme Caption Generator — Free AI Captions | DoAide Meme',
     description: 'Generate funny meme captions with AI. Describe a topic, pick a tone, and get 5 creative suggestions instantly. Free, no login.',
     canonical: `${BASE}/caption-generator`,
+    h1: 'AI Meme Caption Generator',
   },
   {
     path: '/create',
     title: 'Meme Editor — Create & Customize Memes | DoAide Meme',
     description: 'Full-featured meme editor with text, stickers, filters, and sharing. Create memes from templates or your own images.',
     canonical: `${BASE}/create`,
+    h1: 'Meme Editor',
   },
   {
     path: '/blog',
     title: 'Meme Blog — Tips, Guides & Meme Marketing | DoAide Meme',
     description: 'Tips, guides, and insights on meme culture, meme marketing, and creating memes that people actually share.',
     canonical: `${BASE}/blog`,
+    h1: 'Meme Blog',
   },
 ]
 
@@ -95,8 +101,30 @@ for (const [, slug] of slugMatches) {
     title,
     description,
     canonical: `${BASE}/blog/${slug}`,
+    h1: titleMatch ? titleMatch[1] : 'DoAide Meme Blog',
   })
 }
+
+const ORG = { '@type': 'Organization', name: 'DoAide', url: 'https://doaide.com' }
+
+// WebApplication for the tools, Blog for the index, BlogPosting for posts.
+function jsonLdFor(route) {
+  const base = { '@context': 'https://schema.org', url: route.canonical, description: route.description, publisher: ORG }
+  if (route.path.startsWith('/blog/')) {
+    return { ...base, '@type': 'BlogPosting', headline: route.h1, mainEntityOfPage: route.canonical, image: OG_IMAGE, author: ORG }
+  }
+  if (route.path === '/blog') return { ...base, '@type': 'Blog', name: 'DoAide Meme Blog' }
+  return {
+    ...base,
+    '@type': 'WebApplication',
+    name: route.path === '/' ? 'DoAide Meme' : route.h1,
+    applicationCategory: 'MultimediaApplication',
+    operatingSystem: 'Web',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
+  }
+}
+
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
 // ── Read the template ────────────────────────────────────────────────────────
 const templateHtml = readFileSync(join(DIST, 'index.html'), 'utf-8')
@@ -138,6 +166,10 @@ for (const route of routes) {
   html = replaceMetaTag(html, 'name', 'twitter:title', route.title)
   html = replaceMetaTag(html, 'name', 'twitter:description', route.description)
   html = replaceMetaTag(html, 'name', 'twitter:image', OG_IMAGE)
+  const ld = JSON.stringify(jsonLdFor(route)).replace(/</g, '\\u003c')
+  html = html.replace('</head>', () => `    <script type="application/ld+json">${ld}</script>\n  </head>`)
+  // A crawler-visible h1; React replaces #root's children on mount.
+  html = html.replace('<div id="root"></div>', () => `<div id="root"><h1>${esc(route.h1)}</h1></div>`)
 
   // Write file
   const routePath = route.path === '/' ? '/' : route.path
